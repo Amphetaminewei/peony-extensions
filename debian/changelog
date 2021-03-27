@@ -1,3 +1,191 @@
+peony-extensions (3.2.2+0324) v101; urgency=medium
+
+  * 最新正式版本。
+    - 添加右键发送文件到移动设备功能。
+    - 影响域：右键菜单发送文件。
+  * New upstream release.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Tue, 23 Mar 2021 16:30:35 +0800
+
+peony-extensions (3.2.2+0311) v101; urgency=medium
+
+  * 最新正式版本。
+    - 修复bug#41623。
+    - 影响域：计算机视图。
+  * New upstream release.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Thu, 11 Mar 2021 20:30:35 +0800
+
+peony-extensions (3.2.2+0306) v101; urgency=medium
+
+  * 最新正式版本。
+    - 修复卸载samba会卸载掉peony-extensions问题。
+    - 影响域：文件管理器插件自身，peony-share升级。
+  * New upstream release.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Thu, 04 Mar 2021 17:10:35 +0800
+
+peony-extensions (3.2.2+0304) v101; urgency=medium
+
+  * 最新正式版本。
+    - 最新版本更新,HW990-PC修复bug#40779。
+  * New upstream release.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Thu, 04 Mar 2021 17:10:35 +0800
+
+peony-extensions (3.2.2+0301) v101; urgency=medium
+
+  * 最新正式版本。
+    - 最新版本更新,修复bug#39434。
+  * New upstream release.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Mon, 01 Mar 2021 09:20:35 +0800
+
+peony-extensions (3.2.1) v101; urgency=medium
+
+  * 最新正式版本。
+    - 属性窗口根据新设计稿重构。
+  * New upstream release.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Thu, 28 Jan 2021 15:20:31 +0800
+
+peony-extensions (3.2.0+0121) v101; urgency=medium
+
+  * 最新正式版本。
+    - 解决蓝牙插件不显示问题。
+  * New upstream release.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Thu, 21 Jan 2021 17:34:31 +0800
+
+peony-extensions (3.2.0) v101; urgency=medium
+
+  * 最新正式版本。
+  * New upstream release.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Mon, 18 Jan 2021 09:34:31 +0800
+
+peony-extensions (3.0.15) v101; urgency=medium
+
+  * 同步上游更新，在新peony版本基础上编译包
+    - 添加版本检查功能，解决二进制兼容问题。
+    - 验证最新版本。
+  * New upstream release.
+    - Add version check function, must be agree with 
+      peony version.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Sat, 16 Jan 2021 17:25:35 +0800
+
+peony-extensions (3.0.14-1) v101; urgency=medium
+
+  * 同步上游更新，在新peony版本基础上编译包
+    - 解决bug27417，暂时屏蔽版本检查功能。
+  * New upstream release.
+    - Fix bug(#27417).
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Fri, 08 Jan 2021 17:25:35 +0800
+
+peony-extensions (3.0.13-2) v101; urgency=medium
+
+  * 同步上游更新，在新peony版本基础上编译包
+    -屏蔽掉以管理员身份打开插件。
+  * New upstream release.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Tue, 29 Dec 2020 13:35:35 +0800
+
+peony-extensions (3.0.12) v101; urgency=medium
+
+  * 同步上游更新，在新peony版本基础上编译包
+    - 修复iso文件无法右键解压缩问题(#28951)。
+    - 修复蓝牙发送文件插件未集成到版本问题。
+    - 添加以管理员身份打开插件。
+  * New upstream release.
+    - Fix can not uncompress iso file issue(#28951),
+      and add open as admin plugin.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Mon, 21 Dec 2020 15:55:35 +0800
+
+peony-extensions (3.0.11-3) v101; urgency=medium
+
+  * 同步上游更新，在新peony版本基础上编译包
+    - 修复普通用户无法设置文件夹分享问题。
+    - 修复FTP首次连接失败后无法登录问题。
+    - 修复打开gparted软件出现远程目录分类问题。
+    - 添加蓝牙发送文件插件。
+  * New upstream release.
+    - Fix not root account can not share folder issue,
+      and add bluetooth send file plugin.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Thu, 12 Dec 2020 20:55:35 +0800
+
+peony-extensions (3.0.10) v101; urgency=medium
+
+  * 同步上游更新，在新peony版本基础上编译包
+    - 修复bug #25737, .tgz格式压缩文件右键菜单
+      没有解压缩选项。
+    - 修复麒麟文件保护箱中文件夹可被设置共享问题。
+  * New upstream release.
+    - Fix .tgz format compressed file has no
+      uncompress option issue(#25737).
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Mon, 23 Nov 2020 14:05:35 +0800
+
+peony-extensions (3.0.9) v101; urgency=medium
+
+  * 同步上游更新，在新peony版本基础上编译包
+    - 修复bug #22897, 首次进入系统，右键菜单没有
+      打开终端选项问题。
+  * New upstream release.
+    - update with latest main version code，fix bug #22897.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Thu, 12 Nov 2020 16:05:35 +0800
+
+peony-extensions (3.0.8) v101; urgency=medium
+
+  * 同步上游更新，在新peony版本基础上编译包
+    - 修复bug #23260, 在计算机视图本地本区右键导致崩溃的问题。
+  * New upstream release.
+    - update with latest main version code，fix bug #23260.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Thu, 05 Nov 2020 14:05:35 +0800
+
+peony-extensions (3.0.7) v101; urgency=medium
+
+  * 同步上游更新，在新peony版本基础上编译包
+    - 修复bug #21883,18957,21022,18216,22521.
+  * New upstream release.
+    - update with latest main version code.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Fri, 16 Oct 2020 10:05:35 +0800
+
+peony-extensions (3.0.6) v101; urgency=medium
+
+  * 同步上游更新，在新peony版本基础上编译包
+  * New upstream release.
+    - update with latest main version code.
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Fri, 16 Oct 2020 10:05:35 +0800
+
+peony-extensions (3.0.5-3) v101; urgency=medium
+
+  * New upstream release.
+    - Fix support more formats pictures issues.(#19460,11871).
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Sat, 10 Oct 2020 10:05:35 +0800
+
+peony-extensions (3.0.4) v101; urgency=medium
+
+  * New upstream release.
+    - Refresh peony window if volume device removed.(#18184).
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Fri, 24 Sep 2020 16:05:35 +0800
+
+peony-extensions (3.0.3-1) v101; urgency=medium
+
+  * New upstream release.
+    - Add eject function for volum in computer view.(#18216).
+
+ -- MeihongHe <hemeihong@kylinos.cn>  Mon, 21 Sep 2020 10:05:35 +0800
+
 peony-extensions (3.0.2-1) unstable; urgency=medium
 
   * New upstream release.
