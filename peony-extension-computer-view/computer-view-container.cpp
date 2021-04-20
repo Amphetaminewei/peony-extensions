@@ -234,6 +234,7 @@ void Peony::ComputerViewContainer::bindModel(Peony::FileItemModel *model, Peony:
         m_view->deleteLater();
 
     m_view = new ComputerView(this);
+    connect(m_view, &ComputerView::customContextMenuRequested, this, &ComputerViewContainer::customContextMenuRequested);
     auto layout = new QHBoxLayout;
     layout->addWidget(m_view);
     setLayout(layout);

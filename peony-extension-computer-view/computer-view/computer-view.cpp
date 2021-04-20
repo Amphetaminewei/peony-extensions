@@ -34,6 +34,9 @@
 
 #include <QDebug>
 
+#include <QScroller>
+#include <QTimer>
+
 ComputerView::ComputerView(QWidget *parent) : QAbstractItemView(parent)
 {
     setItemDelegate(new ComputerItemDelegate(this));
@@ -61,6 +64,32 @@ ComputerView::ComputerView(QWidget *parent) : QAbstractItemView(parent)
     setSelectionMode(QAbstractItemView::ExtendedSelection);
     this->viewport()->setMouseTracking(true);
     this->viewport()->installEventFilter(this);
+
+    QScroller::scroller(this)->grabGesture(this, QScroller::LeftMouseButtonGesture);
+    setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+
+    auto props = QScroller::scroller(this)->scrollerProperties();
+    props.setScrollMetric(QScrollerProperties::FrameRate, QScrollerProperties::Fps60);
+    props.setScrollMetric(QScrollerProperties::AxisLockThreshold, 0.33);
+    props.setScrollMetric(QScrollerProperties::MaximumClickThroughVelocity, 0);
+    props.setScrollMetric(QScrollerProperties::DecelerationFactor, 0.7); // 减速到0需要的时间，值越大时间越短
+    props.setScrollMetric(QScrollerProperties::MaximumVelocity, 0.5);
+    props.setScrollMetric(QScrollerProperties::OvershootDragResistanceFactor, 0.33);
+    props.setScrollMetric(QScrollerProperties::OvershootScrollDistanceFactor, 0.33);
+    props.setScrollMetric(QScrollerProperties::SnapPositionRatio, 0.33);
+//    props.setScrollMetric(QScrollerProperties::DragStartDistance, 0);
+    QScroller::scroller(this->viewport())->setScrollerProperties(props);
+
+    m_long_touch_timer = new QTimer(this);
+    connect(m_long_touch_timer, &QTimer::timeout, [&]() {
+        m_long_touch_timer->stop();
+
+        auto current_pos = this->mapFromGlobal(QCursor::pos());
+        if (qAbs(m_last_touch_pos.x() - current_pos.x()) < 5
+            && qAbs(m_last_touch_pos.y() - current_pos.y()) < 5) {
+            Q_EMIT ComputerView::customContextMenuRequested(current_pos);
+        }
+    });
 }
 
 bool ComputerView::eventFilter(QObject *object, QEvent *event)
@@ -89,8 +118,10 @@ void ComputerView::scrollTo(const QModelIndex &index, QAbstractItemView::ScrollH
 {
     //return;
     //FIXME: scroll to the index more accurecely.
-    //auto y = m_rect_cache.value(index).y();
-    //verticalScrollBar()->setValue(y);
+//    auto y = m_rect_cache.value(index).y();
+//    verticalScrollBar()->setValue(y);
+//    setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+//    QAbstractItemView::scrollTo(index);
 }
 
 QModelIndex ComputerView::indexAt(const QPoint &point) const
@@ -255,6 +286,11 @@ void ComputerView::paintEvent(QPaintEvent *e)
 
 void ComputerView::mousePressEvent(QMouseEvent *event)
 {
+    if (event->source() == Qt::MouseEventSynthesizedByQt) {
+        m_long_touch_timer->start(1000);
+        m_last_touch_pos = event->pos();
+    }
+
     if (event->button() == Qt::LeftButton) {
         m_isLeftButtonPressed = true;
         m_rubberBand->hide();
@@ -271,6 +307,13 @@ void ComputerView::mousePressEvent(QMouseEvent *event)
 
 void ComputerView::mouseMoveEvent(QMouseEvent *event)
 {
+    if (m_long_touch_timer->isActive()) {
+        if (qAbs(m_last_touch_pos.x() - event->x() > 5)
+                || qAbs(m_last_touch_pos.y() - event->y() > 5)) {
+            m_long_touch_timer->stop();
+        }
+    }
+
     QAbstractItemView::mouseMoveEvent(event);
     if (m_isLeftButtonPressed) {
         auto pos = event->pos();
@@ -292,6 +335,10 @@ void ComputerView::mouseMoveEvent(QMouseEvent *event)
 
 void ComputerView::mouseReleaseEvent(QMouseEvent *event)
 {
+    if (event->source() == Qt::MouseEventSynthesizedByQt) {
+        m_long_touch_timer->stop();
+    }
+
     m_rubberBand->hide();
     m_isLeftButtonPressed = false;
     QAbstractItemView::mouseReleaseEvent(event);

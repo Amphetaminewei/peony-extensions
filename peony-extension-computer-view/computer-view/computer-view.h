@@ -28,6 +28,7 @@
 
 class ComputerProxyModel;
 class QRubberBand;
+class QTimer;
 
 class ComputerView : public QAbstractItemView
 {
@@ -82,7 +83,8 @@ private:
 
     QModelIndex m_hoverIndex;
 
-    int m_scrollStep = 100;
+    int m_scrollStep = 1;
+//    int m_scrollStep = 100;
 
     int m_totalHeight = 0;
     int m_totalWidth = 0;
@@ -95,6 +97,9 @@ private:
     QSize m_networkItemFixedSize = QSize(108, 144);
 
     QHash<QModelIndex, QRect> m_rect_cache;
+
+    QTimer* m_long_touch_timer;
+    QPoint m_last_touch_pos;
 };
 
 #endif // COMPUTERVIEW_H
