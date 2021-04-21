@@ -1,3 +1,9 @@
+peony-extensions (3.2.2+0421) v101; urgency=medium
+
+  * 增加触摸滚动
+
+ -- wangweinan <wangweinan@kylinos.cn>  Tue, 23 Mar 2021 16:30:35 +0800
+
 peony-extensions (3.2.2+0324) v101; urgency=medium
 
   * 最新正式版本。
